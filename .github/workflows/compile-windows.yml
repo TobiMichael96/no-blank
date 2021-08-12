@@ -12,7 +12,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Compile the application.
         run: make build
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Release windows binary.
+        uses: softprops/action-gh-release@v1
         with:
-         file_pattern: no-blank.exe
-         commit_message: Add binary for windows.
+          body: Windows binary
+          files: no-blank.exe

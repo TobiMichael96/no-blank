@@ -12,9 +12,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Compile the application.
         run: make build
-      - name: Print all files.
-        run: ls -alh
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Rename macos binary.
+        run: mv no-blank no-blank-macos
+      - name: Release macos binary.
+        uses: softprops/action-gh-release@v1
         with:
-          file_pattern: no-blank
-          commit_message: Add binary for macos.
+          body: MacOS binary
+          files: no-blank-macos
