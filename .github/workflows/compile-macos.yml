@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Compile the application.
         run: make build
+      - name: Print all files.
+        run: ls -alh
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: no-blank
