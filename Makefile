@@ -1,5 +1,6 @@
 prepare:
-	go get
+	go get github.com/gen2brain/beeep
+	go get github.com/go-vgo/robotgo
 
 build:
 	@-$(MAKE) prepare
