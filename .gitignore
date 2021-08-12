@@ -1,4 +1,4 @@
 .idea
 *.iml
 no-blank
-go.mod
+go.*
