@@ -1,4 +1,8 @@
+prepare:
+	go get
+
 build:
+	@-$(MAKE) prepare
 	go build
 
 build-windows:
@@ -11,3 +15,6 @@ build-windows:
 	   CGO_CFLAGS="`go env CGO_CFLAGS` -I/usr/local/x86_64-w64-mingw32/include -I/usr/local/opt/zlib/include" \
 	   CGO_LDFLAGS="`go env CGO_LDFLAGS` -L/usr/local/x86_64-w64-mingw32/lib -L/usr/local/x86_64-w64-mingw32/lib -L/usr/local/opt/zlib/lib" \
 	   go build -x -trimpath -ldflags="-w -s -extldflags -static"
+
+clean:
+	go clean
