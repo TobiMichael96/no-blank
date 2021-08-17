@@ -1,6 +1,7 @@
 prepare:
 	go get github.com/gen2brain/beeep
 	go get github.com/go-vgo/robotgo
+	go get fyne.io/fyne/v2/app
 
 build:
 	@-$(MAKE) prepare
