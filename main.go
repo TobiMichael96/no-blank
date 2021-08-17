@@ -66,7 +66,6 @@ func main() {
 					awayTime.SetText(generateAwayTime(getTimeDiff(lastAction), true))
 					progressbar.SetValue(getTimeDiff(lastAction).Seconds() - sleepTimer/2)
 				}
-				fmt.Println(getTimeDiff(lastAction).Seconds())
 				if getTimeDiff(lastAction).Seconds() > sleepTimer {
 					if away != true {
 						message := "You have been away for too long."
