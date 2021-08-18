@@ -27,7 +27,7 @@ func main() {
 
 	label := widget.NewLabel(fmt.Sprintf("No-Blank time: %0.f seconds", sleepTimer))
 	awayTime := widget.NewLabel("Away time: 0 minute(s)")
-	progressbar := widget.ProgressBar{Max: sleepTimer / 2}
+	progressbar := widget.ProgressBar{Max: sleepTimer}
 	w.SetContent(container.NewVBox(
 		label,
 		&progressbar,
@@ -56,16 +56,12 @@ func main() {
 					}
 					time.Sleep(3 * time.Second)
 				}
-				w.Hide()
 				away = false
 				x, y = getMousePosition()
 				lastAction = getCurrentTime()
 			} else {
-				if getTimeDiff(lastAction).Seconds() > sleepTimer/2 {
-					w.Show()
-					awayTime.SetText(generateAwayTime(getTimeDiff(lastAction), true))
-					progressbar.SetValue(getTimeDiff(lastAction).Seconds() - sleepTimer/2)
-				}
+				awayTime.SetText(generateAwayTime(getTimeDiff(lastAction), true))
+				progressbar.SetValue(getTimeDiff(lastAction).Seconds())
 				if getTimeDiff(lastAction).Seconds() > sleepTimer {
 					if away != true {
 						message := "You have been away for too long."
@@ -87,7 +83,7 @@ func main() {
 		}
 	}()
 
-	a.Run()
+	w.ShowAndRun()
 }
 
 func getTimeDiff(offTime time.Time) time.Duration {
