@@ -76,8 +76,9 @@ func main() {
 					}
 					rand.Seed(time.Now().UnixNano())
 					robotgo.DragMouse(rand.Intn(1500), rand.Intn(1500))
-					time.Sleep(5 * time.Second)
+					time.Sleep(5 * time.Millisecond)
 					x, y = getMousePosition()
+					time.Sleep(10 * time.Second)
 				}
 			}
 		}
