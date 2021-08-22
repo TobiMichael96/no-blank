@@ -26,7 +26,7 @@ func main() {
 	w := a.NewWindow("No-Blank")
 
 	label := widget.NewLabel(fmt.Sprintf("No-Blank time: %0.f seconds", sleepTimer))
-	awayTime := widget.NewLabel("Away time: 0 minute(s)")
+	awayTime := widget.NewLabel("Last away time: 0.0 minute(s)")
 	progressbar := widget.ProgressBar{Max: sleepTimer}
 	w.SetContent(container.NewVBox(
 		label,
@@ -60,7 +60,6 @@ func main() {
 				x, y = getMousePosition()
 				lastAction = getCurrentTime()
 			} else {
-				awayTime.SetText(generateAwayTime(getTimeDiff(lastAction), true))
 				progressbar.SetValue(getTimeDiff(lastAction).Seconds())
 				if getTimeDiff(lastAction).Seconds() > sleepTimer {
 					if away != true {
@@ -105,13 +104,13 @@ func generateAwayTime(awayTime time.Duration, gui bool) string {
 		if gui != true {
 			return fmt.Sprintf("You have been away for %.1f minute(s).", awayTime.Minutes())
 		} else {
-			return fmt.Sprintf("Away time: %.1f minute(s)", awayTime.Minutes())
+			return fmt.Sprintf("Last away time: %.1f minute(s)", awayTime.Minutes())
 		}
 	} else {
 		if gui != true {
 			return fmt.Sprintf("You have been away for %.1f hours(s).", awayTime.Hours())
 		} else {
-			return fmt.Sprintf("Away time: %.1f hours(s)", awayTime.Hours())
+			return fmt.Sprintf("Last away time: %.1f hours(s)", awayTime.Hours())
 		}
 	}
 }

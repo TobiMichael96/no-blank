@@ -19,4 +19,5 @@ build-windows:
 	   go build -x -trimpath -ldflags="-w -s -extldflags -static"
 
 clean:
+	rm -rf no-blank no-blank.exe
 	go clean
